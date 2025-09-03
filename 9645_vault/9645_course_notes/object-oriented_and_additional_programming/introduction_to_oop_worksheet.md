@@ -174,12 +174,13 @@ Create an instance of a `Student` - using yourself as an example.
 ```python
 
 class Student:
-	def __init__(self, birthday, classroom, eca):
-	self.birthday = birthday
-	self.classroom = classroom
-	self.eca = eca
+	def __init__(self, name, birthday, classroom, eca):
+		self.name = name
+		self.birthday = birthday
+		self.classroom = classroom
+		self.eca = eca
 
-student = Student("2008", "12M", 0)
+student1 = Student("Bob", "19/09/2008", "12M", 0)
 
 ```
 
@@ -263,6 +264,38 @@ Create getter methods so that every property contained within a given student ca
 ---
 
 **A:**
+
+```python
+
+class Student:
+	def __init__(self, birthday, classroom, eca, gpa, grades, favsubjct):
+		self.__birthday = birthday
+		self.__classroom = classroom
+		self.__eca = eca
+		self.__gpa = gpa
+		self.__grades = grades
+		self.__favsubjct = favsubjct
+		
+	def add_eca(self):
+		self.__eca += 1
+	
+	def get_eca(self):
+		return(self.__eca)
+	
+	def add_grade(self, grade: str):
+		self.__grades.append(grade)
+	
+	def get_grades(self):
+		return(self.__grades)
+
+student1 = Student("2008", "12M", 0, 0.0, ["A", "A*", "B"], "Computer Science")
+student1.add_eca()
+print(Student.get_eca(student1))
+
+student1.add_grade("C")
+print(Student.get_grades(student1))
+
+```
 
 ---
 
