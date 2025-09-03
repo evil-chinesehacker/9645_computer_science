@@ -71,8 +71,9 @@ The three commands are `stage`, `commit` and `push`
 **`push`** - upload the changes to the server.
 
 ``` shell
+git stage .
 git stage <name of the file you just created>
-git commit -m "made my first note"
+git commit -m "made my first note" 
 git push
 ```
 
