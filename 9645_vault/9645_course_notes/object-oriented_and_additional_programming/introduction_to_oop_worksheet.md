@@ -329,6 +329,41 @@ The GPA can be calculated by finding the point score for each grade the student 
 
 **A:**
 
+```python
+
+class Student:
+	def __init__(self, birthday, classroom, eca, gpa, grades, favsubjct):
+		self.__birthday = birthday
+		self.__classroom = classroom
+		self.__eca = eca
+		self.__gpa = gpa
+		self.__grades = grades
+		self.__favsubjct = favsubjct
+		
+	def add_eca(self):
+		self.__eca += 1
+	
+	def get_eca(self):
+		return(self.__eca)
+	
+	def add_grade(self, grade: str):
+		self.__grades.append(grade)
+	
+	def get_grades(self):
+		return(self.__grades)
+
+	def calculate_grades(self):
+		
+	
+student1 = Student("2008", "12M", 0, 0.0, ["A", "A*", "B"], "Computer Science")
+student1.add_eca()
+print(Student.get_eca(student1))
+
+student1.add_grade("C")
+print(Student.get_grades(student1))
+
+```
+
 ---
 
 *To save, share and back up your work:*
