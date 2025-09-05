@@ -144,6 +144,18 @@ Create a new class named `InternationalStudent` that inherits from your `Student
 
 **A:**
 
+```python
+
+class InternationalStudent:
+	def __init__(self, fee_paid, nationality, expected_grade):
+		self.__fee_paid = fee_paid
+		self.__nationality = nationality
+		self.__expected_grade = expected_grade
+	
+student1 = InternationalStudent(100000, "Chinese", "A*")
+
+```
+
 ---
 
 *To save, share and backup your work:*
