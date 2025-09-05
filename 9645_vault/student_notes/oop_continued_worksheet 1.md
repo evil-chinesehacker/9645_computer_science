@@ -152,7 +152,27 @@ class InternationalStudent:
 		self.__nationality = nationality
 		self.__expected_grade = expected_grade
 	
+	def fee_setter(self):
+		self.__fee_paid = fee_paid
+		
+	def nationality_setter(self):
+		self.__nationality = nationality
+	
+	def expected_grade_setter(self):
+		self.__expected_grade = expected_grade
+	
+	def fee_getter(self):
+		return self.__fee_paid
+	
+	def nationality_getter(self):
+		return self.__nationality
+	
+	def expected_grade_getter(self):
+		return self.__expected_grade
+	
+	
 student1 = InternationalStudent(100000, "Chinese", "A*")
+print(InternationalStudent.fee_getter(student1))
 
 ```
 
