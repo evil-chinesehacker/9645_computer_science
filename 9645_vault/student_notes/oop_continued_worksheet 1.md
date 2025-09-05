@@ -249,6 +249,67 @@ The `find_necessary_tutors` method iterates through the student’s grades and c
 ---
 
 **A:**
+```python
+
+class InternationalStudent:
+	
+	expected_grade_value = ''
+	current_grade_value = ''
+	
+	def __init__(self, fee_paid, nationality, expected_grade, current_grade):
+		self.__fee_paid = fee_paid
+		self.__nationality = nationality
+		self.__expected_grade = expected_grade
+		self.__current_grade = current_grade
+	
+	def set_fee(self):
+		self.__fee_paid = fee_paid
+		
+	def set_nationality(self):
+		self.__nationality = nationality
+	
+	def set_expected_grade(self):
+		self.__expected_grade = expected_grade
+	
+	def set_current_grade(self):
+		self.__current_grade = current_grade
+	
+	def get_fee(self):
+		return self.__fee_paid
+	
+	def get_nationality(self):
+		return self.__nationality
+	
+	def get_expected_grade(self):
+		return self.__expected_grade
+
+	def get_current_grade(self):
+		return self.__current_grade
+	
+	def find_neccssary_tutors(self):
+	
+		grade_values = {
+		'A*': 7,
+		'A': 6,
+		'B': 5,
+		'C': 4,
+		'D': 3,
+		'E': 2,
+		'U': 1
+		}
+		
+		current_grade_value = grade_values[self.__current_grade]
+		expected_grade_value = grade_values[self.__expected_grade]
+		if expected_grade_value > current_grade_value:
+			print("You need a tutor!")
+		
+student1 = InternationalStudent(100000, "Chinese", "A*", "A*")
+student2 = InternationalStudent(60000, "African", "A", "B")
+student3 = InternationalStudent(70000, "Singaporean", "B", "A*")
+
+InternationalStudent.find_neccssary_tutors(student3)
+
+```
 
 ---
 
