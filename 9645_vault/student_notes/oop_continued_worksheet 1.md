@@ -298,14 +298,18 @@ class InternationalStudent:
 		'U': 1
 		}
 		
+		tutor = "You need a tutor."
+		
 		current_grade_value = grade_values[self.__current_grade]
 		expected_grade_value = grade_values[self.__expected_grade]
+		print(current_grade_value)
+		print(expected_grade_value)
 		if expected_grade_value > current_grade_value:
-			print("You need a tutor!")
+			print("you need a tutor dude")
 		
 student1 = InternationalStudent(100000, "Chinese", "A*", "A*")
-student2 = InternationalStudent(60000, "African", "A", "B")
-student3 = InternationalStudent(70000, "Singaporean", "B", "A*")
+student2 = InternationalStudent(60000, "Nigerian", "A", "B")
+student3 = InternationalStudent(70000, "Singaporean", "A*", "B")
 
 InternationalStudent.find_neccssary_tutors(student3)
 
