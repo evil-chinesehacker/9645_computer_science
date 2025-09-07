@@ -298,12 +298,8 @@ class InternationalStudent:
 		'U': 1
 		}
 		
-		tutor = "You need a tutor."
-		
 		current_grade_value = grade_values[self.__current_grade]
 		expected_grade_value = grade_values[self.__expected_grade]
-		print(current_grade_value)
-		print(expected_grade_value)
 		if expected_grade_value > current_grade_value:
 			print("you need a tutor dude")
 		
@@ -372,6 +368,100 @@ Override the `calculate_gpa` method in the `InternationalStudent` class. The ove
 ---
 
 **A:**
+```python
+
+class InternationalStudent:
+	
+	expected_grade_value = ''
+	current_grade_value = ''
+	grade_values = {
+		'A*': 4,
+		'A': 3.2,
+		'B': 2.8,
+		'C': 2.0,
+		'D': 1.2,
+		'E': 0.4,
+		'U': 0
+		}
+	
+	def __init__(self, name, fee_paid, nationality, expected_grade, current_grade):
+		self.__name = name
+		self.__fee_paid = fee_paid
+		self.__nationality = nationality
+		self.__expected_grade = expected_grade
+		self.__current_grade = current_grade
+		self.__gpa = self.calculate_gpa()
+	
+	def set_fee(self):
+		self.__fee_paid = fee_paid
+		
+	def set_nationality(self):
+		self.__nationality = nationality
+	
+	def set_expected_grade(self):
+		self.__expected_grade = expected_grade
+	
+	def set_current_grade(self):
+		self.__current_grade = current_grade
+	
+	def get_name(self):
+		return self.__name
+	
+	def get_fee(self):
+		return self.__fee_paid
+	
+	def get_nationality(self):
+		return self.__nationality
+	
+	def get_expected_grade(self):
+		return self.__expected_grade
+
+	def get_current_grade(self):
+		return self.__current_grade
+	
+	def get_gpa(self):
+		return self.__gpa
+	
+	def find_neccssary_tutors(self):
+		current_grade_value = self.grade_values[self.__current_grade]
+		expected_grade_value = self.grade_values[self.__expected_grade]
+		if expected_grade_value > current_grade_value:
+			print("you need a tutor dude")
+		
+	def calculate_gpa(self):
+		calculated = self.grade_values[self.__current_grade]
+		return calculated
+
+	def __str__(self):
+		return(
+		f"School fee paid: {self.__fee_paid}\n"+
+		f"Nationality: {self.__nationality}\n"+
+		f"Expected Grade: {self.__expected_grade}\n"+
+		f"Current Grade: {self.__current_grade}\n"+
+		f"GPA: {float(self.__gpa)}\n"
+		)
+		
+class OverrideGpa:
+	def __init__(self, student):
+		self.newgpa = self.override_gpa(student)
+		
+	def override_gpa(self, student):
+		new_calculated = student.get_gpa() * len(student.get_name())
+		return new_calculated
+	
+	def __str__(self):
+		return(f"New calculated GPA: {self.newgpa}")
+	
+student1 = InternationalStudent("LingLong", 100000, "Chinese", "A*", "A*")
+student2 = InternationalStudent("Jamal", 60000, "Nigerian", "A", "B")
+student3 = InternationalStudent("Bryan", 70000, "Singaporean", "A*", "B")
+
+#InternationalStudent.find_neccssary_tutors(student3)
+print(student1)
+gpa_override = OverrideGpa(student1)
+print(gpa_override)
+
+```
 
 ---
 
