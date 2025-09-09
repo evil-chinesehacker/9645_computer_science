@@ -522,6 +522,103 @@ Refactor the `Student` and `InternationalStudent` classes to use a `Subject` cla
 ---
 
 **A:**
+```python
+class InternationalStudent:
+	expected_grade_value = ''
+	current_grade_value = ''
+	grade_values = {
+		'A*': 4,
+		'A': 3.2,
+		'B': 2.8,
+		'C': 2.0,
+		'D': 1.2,
+		'E': 0.4,
+		'U': 0
+		}
+
+	def __init__(self, name, fee_paid, nationality):
+		self.__name = name
+		self.__fee_paid = fee_paid
+		self.__nationality = nationality
+	
+	def set_fee(self):
+		self.__fee_paid = fee_paid
+
+	def set_nationality(self):
+		self.__nationality = nationality
+
+	def get_name(self):
+		return self.__name
+
+	def get_fee(self):
+		return self.__fee_paid
+
+	def get_nationality(self):
+		return self.__nationality
+
+	def get_gpa(self):
+		return self.__gpa
+
+	def find_neccssary_tutors(self):
+		current_grade_value = self.grade_values[self.__current_grade]
+		expected_grade_value = self.grade_values[self.__expected_grade]
+		if expected_grade_value > current_grade_value:
+			print("you need a tutor dude")
+
+  
+
+	def __str__(self):
+		return(
+		f"School fee paid: {self.__fee_paid}\n"+
+		f"Nationality: {self.__nationality}\n"+
+		f"Expected Grade: {self.__expected_grade}\n"+
+		f"Current Grade: {self.__current_grade}\n"+
+		f"GPA: {float(self.__gpa)}\n"
+		)
+
+class Subject:
+	def __init__(self):
+		self.__subject_names = []
+		self.__current_grades = []
+		self.__expected_grades = []
+		self.__gpa = 0
+
+	def add_subject(self, name, expected, current):
+		self.__subject_names.append(name)
+		self.__expected_grades.append(expected)
+		self.__current_grades.append(current)
+
+	def calculate_gpa(self):
+		iterator = zip(self.__subject_names, self.__current_grades)
+		total = 0
+		for subject, current in iterator:
+			calculated = InternationalStudent.grade_values[current]
+			total = total + calculated
+
+
+		total = total / len(self.__current_grades)
+		self.__gpa = round(total, 2)
+		return self.__gpa
+
+	def return_subjects(self):
+		return(
+		f"Subject Names: {self.__subject_names}\n"+
+		f"Current Grades: {self.__current_grades}\n"+
+		f"Expected Grades: {self.__expected_grades}\n"+
+		f"GPA: {self.__gpa}"
+		)
+
+  
+student1 = InternationalStudent("LingLong", 100000, "Chinese")
+student1grades = Subject()
+student1grades.add_subject("Chemistry", "A*", "A*")
+student1grades.add_subject("Physics", "A", "B")
+student1grades.add_subject("Biology", "A", "A")
+student1grades.calculate_gpa()
+print(student1grades.return_subjects())
+
+#I KNOW SUBJECT IS LIKE AN INDEPEDENT CLASS ON ITS own.. i will uh alot of things later. atleast it sorta works. 
+```
 
 ---
 
