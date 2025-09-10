@@ -651,6 +651,40 @@ class TeamMember:
 ---
 
 **A:**
+```python
+
+class Classroom:
+	def __init__(self, classname):
+		self.__classname = classname
+		self.__students = []
+
+	def add_student(self, student):
+		self.__students.append(student)
+		return self.__students
+	
+	def return_students(self):
+		return [student.return_student() for student in self.__students]
+			#create a new list 
+
+class Student:
+	def __init__(self, name):
+		self.__name = name
+	
+	def return_student(self):
+		return self.__name
+
+#classroom is created from a list of student (objects) = aggregation
+
+
+student1 = Student("Joe")
+student2 = Student("Bob")
+classroom1 = Classroom("12M")
+classroom1.add_student(student1)
+classroom1.add_student(student2)
+print(classroom1.return_students())
+```
+
+
 
 ---
 
