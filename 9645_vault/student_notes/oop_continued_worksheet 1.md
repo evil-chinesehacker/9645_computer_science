@@ -654,9 +654,9 @@ class TeamMember:
 ```python
 
 class Classroom:
-	def __init__(self, classname):
+	def __init__(self, classname): #__init__ = constrcutor. things in bracket = properties. it is "constructing" the "object". this is hte method that is ran when the object is first instantiated
 		self.__classname = classname
-		self.__students = []
+		self.__students = [] #self = name of the object
 
 	def add_student(self, student):
 		self.__students.append(student)
