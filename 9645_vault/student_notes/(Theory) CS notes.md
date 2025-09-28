@@ -42,16 +42,80 @@ There are 3 types of buses..
 
 SR-type Flip-Flop: Has a set and reset function. Anytime a flip-flop is set, Q goes high. Anytime a flip-flop is reset, Q goes low. 
 
-| S   | R   | Q   | !Q  |
-| :-- | :-- | :-- | :-- |
-| 0   | 0   | Q   | !Q  |
-| 1   | 0   | 1   | 0   |
-| 0   | 1   | 0   | 1   |
-| 1   | 1   | X   | X   |
+| S   | R   | Q   | !Q  |                                                                                                         |
+| :-- | :-- | :-- | :-- | ------------------------------------------------------------------------------------------------------- |
+| 0   | 0   | Q   | !Q  | Unstable state: Q can be 1 or 0 depending on the previous state (of the SR latch. more on that later.)  |
+| 1   | 0   | 1   | 0   |                                                                                                         |
+| 0   | 1   | 0   | 1   |                                                                                                         |
+| 1   | 1   | X   | X   | X = can be 0 or 1                                                                                       |
 !Q = logical inverse of Q
+Q = holds its previous state
+S = set
+R = reset
 
-Flip-flops are physical and they depend alot on physics. To make them more stable (less invalid output: Q and !Q have to be different for this to happen for a valid output) use a clock. It makes the flipflop output the stored state only in response to the clock signal: more predictable.
+(insert SR latch)
 
 
-D-type Flip-Flop: Uses an enabler to manage its stored state. if enabler is low, state wont change, but when enabler is high state will be modified. 
-(insert truth table)
+D-type Flip-Flop: Uses an enabler to manage its stored state. if enabler is low, state wont change, but when enabler is high state will be modified. *(only need to know this for exam)*
+
+also its used to make memory. (volatile)
+
+(im not sure if this truth table is correct. remake it later)
+
+| Enabler | X   | Q   |
+| :-----: | :-- | :-- |
+|    0    | 0   | Q   |
+|    0    | 1   | Q   |
+|    1    | 0   | 0   |
+|    1    | 1   | 1   |
+X = input
+Q = output
+
+Flip-flops are physical and they depend alot on physics. To make them more stable *(less invalid output: Q and !Q have to be different for this to happen for a valid output)* use a clock. It makes the flipflop output the stored state only in response to the clock signal: more predictable.
+
+
+26/09/2025
+## im edging it 
+
+![[Pasted image 20250926083049.png]]
+Rising Edge pulse detector (3 nots, 1 and)
+
+**Rising edge pulse**: a momentary pulse triggered by a signal, making it transition from 0 (low state) to 1 (high state). This signal is only activated for 1 "scan cycle" (the process the PLC follows to read inputs, execute the control program and update outputs)
+
+**PLC**: Stands for 'Programmable Logic Controller', which is a programmable computing device used in repetitive tasks, such as manufacturing
+
+
+
+Simplifying circuits is good because the longer current flows through wires/transistors/logic gates, the more heat it will generate. The more heat generated, the higher the electrical resistance. Makes the circuit slower.
+
+
+
+
+weird circuit truth table
+
+
+| A   | B   | OUTPUT |
+| --- | --- | ------ |
+| 0   | 0   | 0      |
+| 0   | 1   | 1      |
+| 1   | 0   | 1      |
+| 1   | 1   | 0      |
+(it is an xor!)
+
+
+## boolean (what is a boolean)
+
+They make solving logic gates faster.
+
+| Name (law)   | And form                                                        | Or form                                                   | extra description                                                                                                                                |
+| ------------ | --------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Identity     | A . 1 = A                                                       | 0 + A = A                                                 | "A boolean variable remains unchanged when AND'd with 1 or OR'd with 0."                                                                         |
+| Null         | 0 . A = 0                                                       | 1 + A = 1                                                 | "A boolean variable AND'd will always be 0. A boolean variable OR'd with 1 will always be 1."                                                    |
+| Idepotent    | A + A = A                                                       | A . A = A                                                 | "A boolean variable OR-ed or AND-ed with itself remains unchanged."                                                                              |
+| Innese?      | $A$ . $\overline A$ = 1                                         | $A$ + $\overline A$ = 1                                   | "The order of operands does not matter for AND and OR operations."                                                                               |
+| Commutative  | A . B = B . A                                                   | A + B = B + A                                             |                                                                                                                                                  |
+| Associative  | (A . B) . C = A . (B . C)                                       | (A + B) + C = A + (B + C)                                 |                                                                                                                                                  |
+| Distributive | A + (B . C) = (A + B) (B + C)                                   | A . (B + C) = (A . B) + (A . C)                           | "Allows you to expand an expression by showing how AND and OR operations interact"<br><br>its like math (you do the things in the bracket first) |
+| Absorption   | A . (A + B) = A                                                 | A + A . B = A<br>                                         |                                                                                                                                                  |
+| DeMorgansLaw | $\overline A.\overline B$ = $\overline A + \overline B$<br><br> | $\overline A + \overline B$ = $\overline A . \overline B$ | Change the sign, split the not                                                                                                                   |
+order of operations apply: and comes first, then or.
