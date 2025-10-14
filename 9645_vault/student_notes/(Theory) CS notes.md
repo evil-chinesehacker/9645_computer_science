@@ -1,4 +1,4 @@
-
+3
 9/09/2025 
 
 ## Logic Gates
@@ -107,15 +107,34 @@ weird circuit truth table
 
 They make solving logic gates faster.
 
-| Name (law)   | And form                                                        | Or form                                                   | extra description                                                                                                                                |
-| ------------ | --------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Identity     | A . 1 = A                                                       | 0 + A = A                                                 | "A boolean variable remains unchanged when AND'd with 1 or OR'd with 0."                                                                         |
-| Null         | 0 . A = 0                                                       | 1 + A = 1                                                 | "A boolean variable AND'd will always be 0. A boolean variable OR'd with 1 will always be 1."                                                    |
-| Idepotent    | A + A = A                                                       | A . A = A                                                 | "A boolean variable OR-ed or AND-ed with itself remains unchanged."                                                                              |
-| Innese?      | $A$ . $\overline A$ = 1                                         | $A$ + $\overline A$ = 1                                   | "The order of operands does not matter for AND and OR operations."                                                                               |
-| Commutative  | A . B = B . A                                                   | A + B = B + A                                             |                                                                                                                                                  |
-| Associative  | (A . B) . C = A . (B . C)                                       | (A + B) + C = A + (B + C)                                 |                                                                                                                                                  |
-| Distributive | A + (B . C) = (A + B) (B + C)                                   | A . (B + C) = (A . B) + (A . C)                           | "Allows you to expand an expression by showing how AND and OR operations interact"<br><br>its like math (you do the things in the bracket first) |
-| Absorption   | A . (A + B) = A                                                 | A + A . B = A<br>                                         |                                                                                                                                                  |
-| DeMorgansLaw | $\overline A.\overline B$ = $\overline A + \overline B$<br><br> | $\overline A + \overline B$ = $\overline A . \overline B$ | Change the sign, split the not                                                                                                                   |
-order of operations apply: and comes first, then or.
+| Name (law)       | And form                                                        | Or form                                                   | extra description                                                                                                                                |
+| ---------------- | --------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Identity         | A . 1 = A                                                       | 0 + A = A                                                 | "A boolean variable remains unchanged when AND'd with 1 or OR'd with 0."                                                                         |
+| Null             | 0 . A = 0                                                       | 1 + A = 1                                                 | "A boolean variable AND'd will always be 0. A boolean variable OR'd with 1 will always be 1."                                                    |
+| Idepotent        | A + A = A                                                       | A . A = A                                                 | "A boolean variable OR-ed or AND-ed with itself remains unchanged."                                                                              |
+| identity i think | $A$ . $\overline A$ = 0                                         | $A$ + $\overline A$ = 1                                   | "The order of operands does not matter for AND and OR operations."                                                                               |
+| Commutative      | A . B = B . A                                                   | A + B = B + A                                             |                                                                                                                                                  |
+| Associative      | (A . B) . C = A . (B . C)                                       | (A + B) + C = A + (B + C)                                 | grouping of variables in an expression doesn't matter for either the + or .                                                                      |
+| Distributive     | A + (B . C) = (A + B) . (B + C)                                 | A . (B + C) = (A . B) + (A . C)                           | "Allows you to expand an expression by showing how AND and OR operations interact"<br><br>its like math (you do the things in the bracket first) |
+| Absorption       | A . (A + B) = A                                                 | A + (A . B) = A<br>                                       |                                                                                                                                                  |
+| DeMorgansLaw     | $\overline A.\overline B$ = $\overline A + \overline B$<br><br> | $\overline A + \overline B$ = $\overline A . \overline B$ | Change the sign, split the not                                                                                                                   |
+order of operations apply: NOT comes first, then and (.) comes first, then or. (+)
+
+
+### P1 questions (the 2-3 markers)
+
+Algorithm: A sequence of steps that can be followed to complete a task and that always terminates.
+
+Encapsulation: bundling data and methods within a class, hiding its internal condition from outside access (there MUST be a better definition for this)
+
+**Purpose of a constructor method**: to define the initial values of instance variables **(instance variables are attributes defined in the constructor)**
+
+**Describe the difference between an attribute that has a private/protected/public access modifier (3)
+
+- Private attributes can only be accessed within the class they are defined in. They need getters/setters to be accessed/modified outside the class.
+
+- Protected attributes are **INTENDED** to be accessed only within the parent class and its subclasses. They aren't meant to be accessed directly outside.
+
+*(yes, they can be accessed outside the class similarly to a public attribute. this is bad programming and dunks on encapsulation.)*
+
+- Public attributes can be accessed from anywhere: in and outside of the class they are defined in.

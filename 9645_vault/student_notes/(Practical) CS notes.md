@@ -1,6 +1,6 @@
 
 
-#### to push notes:
+
 
 
 21/09/2025 
@@ -53,12 +53,12 @@ it is NOT the variable an object is assigned to. (example shown below)
 ```python
 #example
 
-class Coordinates(x, y)
-	def __init__(self, x, y)
+class Coordinates():
+	def __init__(self, x, y):
 		self.x = x
 		self.y = y #look, they're public! hah!
 
-p1 = Coordiantes(6, 7) #p1 and p2 are variable names
+p1 = Coordinates(6, 7) #p1 and p2 are variable names
 p2 = Coordinates(6, 7) #did unc snap
 p3 = p1
 
@@ -191,9 +191,9 @@ class Library: #to store the books
 
 	def save_to_file(self, filename):
 		with open(filename, 'w') as f:
-		for book in self.__books.values(): 
+			for book in self.__books.values(): 
 		#.values() creates a view object. more info on it below.
-			f.write(f"{book}\n")
+				f.write(f"{book}\n")
 		#book represents one object in the dictionary.
 		
 #(again..) python calls the '__repr__' method of the 'Book' class to get a string representation of the 'book' object
@@ -204,18 +204,18 @@ class Library: #to store the books
 	def load_from_file(self, filename):
 		books = []
 		with open(filename, 'r') as f: 
-		for line in f: 
+			for line in f: 
 #each line variable contains a single string, representing a line in books.txt
-			title, author = line.strip().split(", ") 
+				title, author = line.strip().split(", ") 
 #split.() splits the string into two parts: first part being 'title', and the second part being 'author'
 			
 #so the string "'weby book', 'weby'" -> title: 'weby book', author: 'weby'
-			books.append((title, author)) #a tuple
+				books.append((title, author)) #a tuple
 		return books
 
 	def display_books(self, books):
 		for title, author in books: #prints out every book title and every author
-		print(f"Title: {title}, Author: {author}")
+			print(f"Title: {title}, Author: {author}")
 
 
 #instantiate
@@ -274,3 +274,264 @@ print(copied_values)
 ```
 
 In short, a view object reflects the current state of a dictionary. 
+
+
+### 2D arrays and slicing
+
+A (very) important/simple way to create a 2d array is 
+
+```python
+
+board = [["" for _ in range(6)] for _ in range(5)]
+for row in board:
+	print(row)
+
+
+```
+
+"row" is the x axis (horizontal), "column" is the y axis (vertical)
+
+Here is a way to iterate through columns, not rows.
+```python
+
+board = [
+['1','2','3'],
+['4','5','6'],
+['7','8','9']
+]
+for col in range(len(board[0])): #iterate through columns
+	for row in range(len(board) - 1, -1, -1): 
+		print(board[row][col])
+	#iterate through the characters in a column in a reverse order
+
+```
+
+iterate through columns in a normal.. order... (top to bottom)
+
+```python
+
+board = [
+['1','2','3'],
+['4','5','6'],
+['7','8','9']
+]
+
+for col in range(len(board[0])):
+	for row in range(len(board)):
+		print(board[row][col])
+
+```
+
+
+### how do i slice????
+
+Basic slicing:
+
+```python
+
+#basic slicing syntax
+list = [0, 1, 2, 3, 4, 5]
+print(list[0:3]) #[start:stop:step] stop is exclusive, while start is inclusive
+
+
+```
+
+```python
+
+#negative slicing syntax: reverse an ENTIRE list
+
+list = [0, 1, 2, 3, 4, 5]
+print(list[::-1])
+
+#reverse last 3 elements of a list
+print(list[-1:-4:-1])
+
+#last (number of) elements
+print(list[-3:])
+
+#everythign except last 2 elements
+print(list[:-2])
+```
+
+
+for OOP refer back to the code things you wrote about.. (library thing)
+
+
+13/10/2025
+### Important Definitions
+
+Algorithm: A sequence of steps that can be followed to complete a task and that always terminates.
+
+Encapsulation: bundling data and methods within a class, hiding its internal condition from outside access (there MUST be a better definition for this)
+
+
+
+### Recursion 
+#### the different cases
+
+base case: condition to stop recursion
+
+general case: condition that continues recursion
+
+recursive case: the part where the function calls itself with a modified input
+
+#### recursion program example
+
+```python
+
+def Unknown(x):
+    if x < 10: #--Base Case--#
+        return x
+    else: #--General Case--#
+        a = x % 10         #get the last digit of x with modulo
+        b = x // 10        #remove last digit using FLOOR (not true) division
+        return a + Unknown(b)  #--Recursive Case--#
+#add the last digit to the sum of the digits of the remaining number
+
+answer = Unknown(7339)
+print(answer)
+
+```
+
+recursion error: occurs when the maximum recursion depth is exceeded, and the program will crash, outputting a message similarly to this: 
+
+"RecursionError: maximum recursion depth exceeded in comparison"
+
+An example of this may be switching the **base case** from 'x < 10' to 'x < x'. As no integer can be bigger than itself so the condition x < x will always be False.  
+  
+Therefore, as x < x (base case) is never fulfilled, the program will keep recursively calling itself until it reaches a RecursionError/Stack overflow...
+
+#### the concept of stacks
+ *im stacking it im stacking im stacking im stacking im stacking uim stacking im stacking*
+
+Every time a function is called, a new frame (or instance) is added to the call stack. 
+A **frame** is a data structure that holds information about a function call. For example, lets take a look at this SIMPLER recursive program..
+
+```python
+
+def repeater(n, x):
+  if x > 0: #base case
+    x -= 1
+    return repeater(n, x) + n #recursive case
+  return "" #general case
+  
+gubby = repeater("weby", 4)
+print(gubby)
+
+```
+
+| Call level (stack) | n    | x   | Return Value       | Description                                                                                            |
+| ------------------ | ---- | --- | ------------------ | ------------------------------------------------------------------------------------------------------ |
+| 1                  | weby | 4   | ?                  | n value never changes                                                                                  |
+| 2                  | weby | 3   | ?                  | return value isnt known until stack is unwinded                                                        |
+| 3                  | weby | 2   | ?                  |                                                                                                        |
+| 4                  | weby | 1   | ?                  |                                                                                                        |
+| 5                  | weby | 0   | ""                 | Base Case is met/fulfilled, stack starts to unwind... Ordered by the last recursive call to the first. |
+| 4                  | weby | 1   | "weby"             |                                                                                                        |
+| 3                  | weby | 2   | "webyweby"         |                                                                                                        |
+| 2                  | weby | 3   | "webywebyweby"     |                                                                                                        |
+| 1                  | weby | 4   | "webywebywebyweby" |                                                                                                        |
+In short: (for unwinding)
+
+ **`repeater("weby", 0)`** returns `""`.
+ **`repeater("weby", 1)`** returns `"weby"`.
+ **`repeater("weby", 2)`** returns `"webyweby"`.
+ **`repeater("weby", 3)`** returns `"webywebyweby"`.
+ **`repeater("weby", 4)`** returns `"webywebywebyweby"`.
+
+
+(IMPORTANT) when unwinding, recursive calls are not being made: **so only return values are being modified.**
+
+
+#### Relationships in OOP
+
+Association: A general relationship in which one class uses or is associated with another
+(don't really have to know about aggregation and composition)
+
+Inheritance: A relationship where a class derives from an existing class, inherieting its attributes and methods: promoting code reusability
+
+**Example:** a car and vehicle (car is a type of vehicle), and a calculator and a pencil case (a calculator is NOT a type of pencil case)
+
+**Explanation**: Calculator and Pencil case are seperate entities, although they might be related because a calculator can be in a pencil case, they dont have a parent-child hierachy/relationship. So the relationship shown is association.
+
+
+#### Dictionaries Extended
+
+so you know the code i wrote (as a correction because i forgot syntax) for the mock exam (Q6)
+
+```python
+
+#QUESTION 6
+
+#also yeah i didnt use a fixed dictionary withj like the numbers 0 to 9 because im cool
+
+class Number:
+	def __init__(self, number):
+		self.__number = number
+		self.__count = 1
+
+	def return_number(self):
+		return self.__number
+
+	def return_count(self):
+		return self.__count
+	
+	def add_count(self):
+		self.__count += 1
+
+	def __repr__(self):
+		return(f"Number: {self.__number}, Count: {self.__count}")
+
+
+class Numbers():
+	def __init__(self):
+		self.__dict = {} #tuples
+
+	def check_objects(self, list):
+		for num in list:
+			if num in self.__dict:
+				self.__dict[num].add_count() #add
+				
+			else: #create the number object
+				temp = Number(num)
+				self.__dict[num] = temp #STORES THE ACTUAL OBJECT ITSELF (unlike what i did on the test). NOT STATIC UNLIKE = temp.return_count()
+	def return_highest_frequency(self):
+		for value in self.__dict.values():
+			print(value) #calls repr
+
+numbers = Numbers()
+
+
+def list(list):
+	numbers.check_objects(list)
+	numbers.return_highest_frequency() #aslo where'd the none come from.. update: nevermind
+
+list([5,3,4,5,4,5]) #testing
+#list([1,4,8,2,4,2,1,4,4,8,1])
+
+```
+
+The code i wrote (as a correction because i forgot syntax) for the mock exam (Q6) could be a lot simpler...
+
+There is a subclass of dict called 'collections.Counter' (from collections import Counter) that is able to count hashable objects within an iterable. 
+
+(translation: keep track of the amount of occurrences of each element in an iterable)
+
+In short, for every new occurence in the iterable, i would make an object to store its count as the value, and the name of the element (a hashable) as the key. collections.Counter makes it so i dont have to create a new object for every new occurence in an iterable, it does it for me.
+
+(im too lazy to port the code ive written utilizing 'Counter' into here. Check "mock exam.py" last Q for more details.)
+
+#### yeah whats a hashable???
+*i love hash browns*
+
+An object is considered hashable if it has a constant hash value throughout its lifetime. A **hash value** is an integer used to quickly compare dictionary keys while looking at a dictionary. It's **state** cannot be changed after creation: they are immutable. 
+
+Hashable objects are, in VERY simple terms, something that can be used as a dictionary key (as it's "hash" value will never change)
+
+| Hashable Objects                                                                                          | Unhashable Objects            |
+| --------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| - Strings<br>- Numbers<br>- Tuples<br>- Frozensets <br><br>*(^^ may come back to <br>this in the future)* | - Arrays<br>- Lists<br>- Sets |
+In summary, 'unhashable' cannot be used as a dictionary key because..
+
+- No stable hash value
+- Data issues: key may not point to the right value anymore
