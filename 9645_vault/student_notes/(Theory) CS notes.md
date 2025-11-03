@@ -120,6 +120,135 @@ They make solving logic gates faster.
 | DeMorgansLaw     | $\overline A.\overline B$ = $\overline A + \overline B$<br><br> | $\overline A + \overline B$ = $\overline A . \overline B$ | Change the sign, split the not                                                                                                                   |
 order of operations apply: NOT comes first, then and (.) comes first, then or. (+)
 
+### The different types of algorithms (hw)
+
+Can be seperated into two main types: searching and sorting.
+
+*Searching: Linear and binary search*
+*Sorting: merge and bubble sort*
+
+#### Bubble Sort
+
+1. compare first two values in dataset
+2. if they're in wrong order (ascending order): swap them
+3. compare next two values..
+*Repeat step 2 and 3 untill end is reached*
+4. If any swaps are made, repeat from beginning (all steps)
+*else, stop: as list is in the correct order*
+
+#### Merge Sort
+
+1. divide dataset into smaller datasets by repeatedly splitting dataset in half
+2. merge two halves into a singular, sorted array (by ascending order)
+![[Screenshot 2025-11-03 at 6.12.03 PM.png]]
+3. repeat step 2 until all elements are merged
+
+#### Linear Search
+
+1. Check the first value
+2. If it is the value you're looking for, stop!
+3. else move on to the next value and check
+4. repeat until all values have been checked
+
+#### Binary Search
+
+1. identify the middle value and compare it to the value youre looking for
+2. if its the value you're looking for, stop!
+3. if middle value > wanted value, create new list with the values LEFT of the middle value
+4. if middle value < wanted value, create new list with the values RIGHT of the middle value
+5. repeat with new list
+
+| Algorithm     | What is it for                        | Advantages                     | Disadvantages               |
+| ------------- | ------------------------------------- | ------------------------------ | --------------------------- |
+| Linear Search | Find a search term in a list or array | Can be used on any list        | Slow, in its worst case     |
+| Binary Search | Find a search term in a list or array | Fast, even in its worst case   | list must be sorted         |
+| Bubble sort   | Sort a list or array into order       | Needs no extra space in memory | slow, in its worse case     |
+| Merge sort    | Sort a list or array into order       | Fast, even in its worst case   | needs extra spacei n memory |
+
+"Big O values"
+
+The maximum number of operations needed to complete an algorithm is called its **Big O** value. This value of an algorithm is expressed as a function of n, where n stands for the number of items that need to be processed.
+
+| Algorithim    | Number of operations (time taken) | Extra Memory |
+| ------------- | --------------------------------- | ------------ |
+| Linear Search | n                                 | 1            |
+| Binary search | log n                             | 1            |
+| Bubble sort   | n^2                               | 1            |
+| Merge sort    | n x log n                         | n            |
+O(n) = linear time, execution time grows linearly with input. etc: iterating through every element in an array
+
+O(log n) = Logarithmic Time, the execution time grows logarithmically (hence the name) as input size increases (often with algorithms that reduce the size of the problem by half each step)
+
+etc. binary search
+
+O(1) = Constant time, execution time doesn't change regardless of input size. etc: accessing an element in an array using its index
+
+(others but im not quite sure. uh..)
+O(N^x) 
+O(x^n)
+
+### Hardware (there is alot of acronyms)
+
+At its core, computers are made up by a lot of transistors. Hardware components are like elements, and transistors are like little electrons and protons and neutrons...
+
+##### CPU (central processing unit)
+
+**Types of architecture**
+
+There are two types of architecture, Harvard and Von Neumann.
+
+In Harvard architecture, the CPU is connected with both the data memory (RAM) and program memory (ROM) separately. 
+![[Pasted image 20251014143732.png]]
+In Von Neumann architecture, there is no seperate data and program memory. 
+![[Pasted image 20251014143828.png]]
+(simplfiy later)
+
+| Comparison            | Harvard                                                                                                                                                           | Von Neumann                                                                                                          |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Hardware requirements | It requires more hardware since it will be requiring separate data and address bus for each memory.                                                               | In contrast to the Harvard architecture, this requires less hardware since only a common memory needs to be reached. |
+| Space requirements    | This requires more space.                                                                                                                                         | Von-Neumann Architecture requires less space.                                                                        |
+| Speed of execution    | Speed of execution is faster because  the processor fetches data and instructions simultaneously .                                                                | Speed of execution is slower since it cannot fetch the data and instructions at the same time.                       |
+| Space usage           | It results in wastage of space since if the space is left in the data memory then the instructions memory cannot use the space of the data memory and vice-versa. | Space is not wasted because the space of the data memory can be utilized by the instructions memory and vice-versa.  |
+| Controlling           | Controlling becomes complex since data and instructions are to be fetched simultaneously.                                                                         | Controlling becomes simpler since either data or instructions are to be fetched at a time.                           |
+
+- Arithmetic Logic Unit (ALU)
+- Control Unit (CU)
+###### Registers
+
+They are super small and fast memory located in the CPU: holds small amount of data required for fetch-decode-execute cycle.
+
+There are 5 main registers:
+- The Program Counter (PC)
+- The Memory Address Register (MAR)
+- The Memory Data Register (MDR)
+- The Accumulator (ACC)
+- Current Instruction Register (CIR)
+
+*note: you MUST KNOW THE ACRONYMS FOR THIS*
+
+
+
+##### - I/O controllers
+
+##### - Bus (types)
+- address bus
+- data bus
+- control bus
+
+##### - RAM (random access memory)
+
+##### - Motherboard
+- ROM (read only memory)
+   -Stores BIOS
+- Clock
+- 
+##### - GPU (graphics processing unit)
+
+##### - SSD (solid state drive)
+
+##### - I/O controllers (input/output controllers)
+
+
 
 ### P1 questions (the 2-3 markers)
 

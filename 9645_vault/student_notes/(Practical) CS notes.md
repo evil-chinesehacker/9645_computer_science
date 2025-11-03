@@ -2,7 +2,6 @@
 
 
 
-
 21/09/2025 
 ## Enum and @dataclass 
 ```python
@@ -401,7 +400,7 @@ An example of this may be switching the **base case** from 'x < 10' to 'x < x'. 
   
 Therefore, as x < x (base case) is never fulfilled, the program will keep recursively calling itself until it reaches a RecursionError/Stack overflow...
 
-#### the concept of stacks
+#### the concept of stacks ("hw")
  *im stacking it im stacking im stacking im stacking im stacking uim stacking im stacking*
 
 Every time a function is called, a new frame (or instance) is added to the call stack. 
@@ -442,6 +441,35 @@ In short: (for unwinding)
 
 (IMPORTANT) when unwinding, recursive calls are not being made: **so only return values are being modified.**
 
+#### queues (hw)
+
+A queue is a data structure similar to a stack, BUT we add values at one end and remove values from the other end. (a literal queue) Also known as a 'FIFO' structure:
+
+**F** - First
+**I** - In
+**F** - First
+**O** - Out
+
+It (typically) has these operations:
+
+Enqueue: add an element to the end of the queue
+Dequeue: remove AND return the element from the front of the queue
+
+Peek: return the element from the front of the queue (without removing)
+
+It consists of two points: the 'end' and the 'front'. End is where items and enqueued, front is where items are dequeued.
+
+![[Pasted image 20251103174225.png]]
+
+##### Differences between stack and queue
+
+|                       | Queue                     | Stack                                                                                            |
+| --------------------- | ------------------------- | ------------------------------------------------------------------------------------------------ |
+| Order of<br>Operation | FIFO (First in first out) | FILO (First in last out)                                                                         |
+| Operations            | Enqueue, dequeue          | Push (add an element to the top of the stack)<br>Pop (remove and return an element from the top) |
+
+
+#### The different types of algorithms 
 
 #### Relationships in OOP
 
@@ -535,3 +563,19 @@ In summary, 'unhashable' cannot be used as a dictionary key because..
 
 - No stable hash value
 - Data issues: key may not point to the right value anymore
+
+
+
+
+
+
+
+
+
+
+
+
+It is 3/11/2025 (dd/mm/yy) and ive decided to drop CS. **It never clicked for me since i took it, unlike other unfamiliar subjects. I've talked to my parents already, but not teacher yet. From 8 ish (i think) people in my class to 4, I think I see why others dropped cs. I think ill be the last. Just for clarification, i think both my teachers are good teachers. For the one that teaches practical coding, I think he tries his best to explain it and gives loads of examples but the concepts are just really tricky, and a lot of things in practical CS are just "figure it out yourself" and arent really straightforward. Theory CS is well, alright. I know that all A-level subjects are hard but other subjects just feel like they make more sense to me.**
+
+*If i get into game development someday (which i plan to in a few weeks), because i need new hobbies (for uni and for myself in general) ill use obsidian to make notes on it, or do something like a really inconsistent sloppy devlog/an amalgamation of texts and images representing something like a diary/scrapbook. Also i think i might get into drawing and video editing. (drawing as in by hand, not digital)*
+
